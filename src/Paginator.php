@@ -1,13 +1,8 @@
 <?php
 
-namespace CoffeeCode\Paginator;
+namespace Toniette\Paginator;
 
-/**
- * Class CoffeeCode Paginator
- *
- * @author Robson V. Leite <https://github.com/robsonvleite>
- * @package CoffeeCode\Paginator
- */
+
 class Paginator
 {
     /** @var int */
@@ -62,15 +57,15 @@ class Paginator
     }
 
     /**
-     * @param int $rows
+     * @param array $rows
      * @param int $limit
      * @param int|null $page
      * @param int $range
      * @param string|null $hash
      */
-    public function pager(int $rows, int $limit = 10, int $page = null, int $range = 3, string $hash = null): void
+    public function pager(array $rows, int $limit = 10, int $page = null, int $range = 3, string $hash = null): void
     {
-        $this->rows = $this->toPositive($rows);
+        $this->rows = $this->toPositive(count($rows));
         $this->limit = $this->toPositive($limit);
         $this->range = $this->toPositive($range);
         $this->pages = (int)ceil($this->rows / $this->limit);
